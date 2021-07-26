@@ -142,6 +142,7 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="longestband.h" />
     <ClInclude Include="mountain.h" />
     <ClInclude Include="pairs_triplets.h" />
   </ItemGroup>

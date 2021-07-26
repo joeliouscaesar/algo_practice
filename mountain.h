@@ -84,3 +84,46 @@ int mountain_naive(vector<int> x) {
 	return longest_mountain;
 }
 
+//this approach is also O(n), but checks if an element is a peak and then gets its length
+//keeps track of the longest
+int mountain_peak_first(vector<int> x) {
+	int max_length = 0;
+	int peak = -1;
+	int len = 0;
+	int j = 0;
+	for (int i = 1; i < x.size() - 1; i++) {
+		
+		//in this case a peak
+		if ((x[i] - x[i - 1] > 0) & (x[i + 1] - x[i] < 0)) {
+			len = 1;
+			j = i - 1;
+			//go backwards and forwards
+			while(j > 0) {
+				if (x[j - 1] < x[j]) {
+					len++;
+				}
+				j--;
+			}
+			j = i + 1;
+			while (j < x.size() - 1) {
+				if (x[j] > x[j + 1]) {
+					len++;
+				}
+				j++;
+			}
+			if (len > max_length) {
+				max_length = len;
+				peak = i;
+			}
+
+		}
+		
+	}
+
+	cout << "peak at: " << peak << endl;
+	return max_length;
+
+}
+
+
+
